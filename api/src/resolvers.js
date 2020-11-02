@@ -1,13 +1,11 @@
-const users = [
-  { id: 1, name: 'Larissa Dantas', email: 'contato@provedor.com', stack: 'frontend' },
-]
+const User = require("./User")
 
 module.exports = {
   Query: {
-    users: () => users,
-    user: () => users[0]
+    users: () => User.find(),
+    user: (_, { id }) => User.findById(id)
   },
   Mutation: {
-    createUser: () => users[0]
+    createUser: (_, {name, email}) => User.create({name, email})
   }
 }
