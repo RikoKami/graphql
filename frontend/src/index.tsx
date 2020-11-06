@@ -1,13 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import { App } from "./containers/App";
 import reportWebVitals from "./reportWebVitals";
+import apolloClient from "./services/apollo";
+import { ApolloProvider } from "react-apollo";
+import { Router } from "react-router";
+import { Route } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ApolloProvider client={apolloClient}>
+    <Router history={history}>
+      <Route path="/" component={App} />
+    </Router>
+  </ApolloProvider>,
   document.getElementById("root")
 );
 
