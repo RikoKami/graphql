@@ -6,6 +6,7 @@ module.exports = gql`
     name: String!
     email: String!
     stack: String
+    github: String
   }
 
   type Query {
@@ -15,5 +16,6 @@ module.exports = gql`
 
   type Mutation {
     createUser(name: String!, email: String!): User
+    updateUser(userId: ID!, email: String!, github: String, stack: String): User
   }
 `;
